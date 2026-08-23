@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<robot name="atm" xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+  <link name="base_footprint"/>
+
+    <link name="base_link">
+    
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://pivot_description/meshes/base_link.stl" />
+      </geometry>
+     <material name="green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+     </material>
+    </visual>
+ 
+  </link>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link" />
+    <origin xyz="0 0 0.032" rpy="0 0 0"/>
+  </joint>
+
+  <link name="right_wheel_link">
+    
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://pivot_description/meshes/right_wheel_link.stl" />
+      </geometry>
+           <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+     </material>
+    </visual>
+    <!--<collision>
+      <origin xyz="0 -0.015 0" rpy="1.57 0 0" />
+      <geometry>
+        <sphere radius="0.033"/>
+      </geometry>
+    </collision>-->
+  </link>
+
+  <joint name="right_wheel_joint" type="continuous">
+    <origin xyz="-0.079 0 -0.0305" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="right_wheel_link" />
+    <axis xyz="1 0 0" />
+  </joint>
+  
+  <link
+    name="left_wheel_link">
+    
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://pivot_description/meshes/left_wheel_link.stl" />
+      </geometry>
+                 <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+     </material>
+    </visual>
+    <!--<collision>
+      <origin xyz="0 0.015 0" rpy="-1.57 0 0" />
+      <geometry>
+        <sphere radius="0.033"/>
+      </geometry>
+    </collision>-->
+  </link>
+
+  <joint name="left_wheel_joint" type="continuous">
+    <origin xyz="0.079 0 -0.0305" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="left_wheel_link" />
+    <axis xyz="1 0 0" />
+  </joint>
+
+
+  </robot>
