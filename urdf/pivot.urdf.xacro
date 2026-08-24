@@ -4,6 +4,8 @@
 
 
   <link name="base_footprint"/>
+<!-- base link n joint-->
+
 
     <link name="base_link">
     
@@ -12,8 +14,8 @@
       <geometry>
         <mesh filename="package://pivot_description/meshes/base_link.stl" />
       </geometry>
-     <material name="green">
-        <color rgba="0.0 1.0 0.0 1.0"/>
+     <material name="chrome">
+        <color rgba="0.88 0.90 0.93 1.0"/>
      </material>
     </visual>
  
@@ -24,6 +26,8 @@
     <child link="base_link" />
     <origin xyz="0 0 0.032" rpy="0 0 0"/>
   </joint>
+
+<!-- right wheel n joint-->
 
   <link name="right_wheel_link">
     
@@ -51,6 +55,9 @@
     <axis xyz="1 0 0" />
   </joint>
   
+
+  <!-- left wheel n joint-->
+
   <link
     name="left_wheel_link">
     
@@ -78,5 +85,147 @@
     <axis xyz="1 0 0" />
   </joint>
 
+
+  <!-- lidar n joint-->
+   
+  <link
+    name="lidar_link">
+    
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://pivot_description/meshes/lidar_link.stl" />
+      </geometry>
+                 <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+     </material>
+    </visual>
+    <!--<collision>
+      <origin xyz="0 0.015 0" rpy="-1.57 0 0" />
+      <geometry>
+        <sphere radius="0.033"/>
+      </geometry>
+    </collision>-->
+  </link>
+
+  <joint name="lidar_joint" type="fixed">
+    <origin xyz="0 0 0.18515" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="lidar_link" />
+  </joint>
+
+
+ <!-- camera n joint-->
+   
+  <link
+    name="camera_link">
+    
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://pivot_description/meshes/camera_link.stl" />
+      </geometry>
+                 <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+     </material>
+    </visual>
+    <!--<collision>
+      <origin xyz="0 0.015 0" rpy="-1.57 0 0" />
+      <geometry>
+        <sphere radius="0.033"/>
+      </geometry>
+    </collision>-->
+  </link>
+
+  <joint name="camera_joint" type="fixed">
+    <origin xyz="-0.0045 -0.11826 0.13872" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="camera_link" />
+  </joint>
+  
+
+  <!-- front_sonic n joint-->
+   
+  <link
+    name="ultrasonic_front_link">
+    
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://pivot_description/meshes/front_sonic_link.stl" />
+      </geometry>
+                 <material name="pcb_green">
+        <color rgba="0.06 0.35 0.18 1.0"/>
+     </material>
+    </visual>
+    <!--<collision>
+      <origin xyz="0 0.015 0" rpy="-1.57 0 0" />
+      <geometry>
+        <sphere radius="0.033"/>
+      </geometry>
+    </collision>-->
+  </link>
+
+  <joint name="ultrasonic_front_joint" type="fixed">
+    <origin xyz="0 -0.06698 0.0645" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="ultrasonic_front_link" />
+  </joint>
+
+  <!-- right_sonic n joint-->
+   
+  <link
+    name="ultrasonic_right_link">
+    
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://pivot_description/meshes/right_sonic_link.stl" />
+      </geometry>
+                 <material name="pcb_green">
+        <color rgba="0.06 0.35 0.18 1.0"/>
+     </material>
+    </visual>
+    <!--<collision>
+      <origin xyz="0 0.015 0" rpy="-1.57 0 0" />
+      <geometry>
+        <sphere radius="0.033"/>
+      </geometry>
+    </collision>-->
+  </link>
+
+  <joint name="ultrasonic_right_joint" type="fixed">
+    <origin xyz="-0.05245 0 0.0657" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="ultrasonic_right_link" />
+  </joint>
+
+  <!-- left_sonic n joint-->
+   
+  <link
+    name="ultrasonic_left_link">
+    
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://pivot_description/meshes/left_sonic_link.stl" />
+      </geometry>
+                 <material name="pcb_green">
+        <color rgba="0.06 0.35 0.18 1.0"/>
+     </material>
+    </visual>
+    <!--<collision>
+      <origin xyz="0 0.015 0" rpy="-1.57 0 0" />
+      <geometry>
+        <sphere radius="0.033"/>
+      </geometry>
+    </collision>-->
+  </link>
+
+  <joint name="ultrasonic_left_joint" type="fixed">
+    <origin xyz="0.05245 0 0.0657" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="ultrasonic_left_link" />
+  </joint>
 
   </robot>
