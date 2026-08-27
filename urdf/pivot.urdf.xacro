@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<robot name="atm" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="pivot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 
   <link name="base_footprint"/>
@@ -10,7 +10,7 @@
     <link name="base_link">
     
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 1.5708" />
       <geometry>
         <mesh filename="package://pivot_description/meshes/base_link.stl" />
       </geometry>
@@ -24,7 +24,7 @@
   <joint name="base_joint" type="fixed">
     <parent link="base_footprint"/>
     <child link="base_link" />
-    <origin xyz="0 0 0.032" rpy="0 0 0"/>
+    <origin xyz="0 0 0.064" rpy="0 0 0"/>
   </joint>
 
 <!-- right wheel n joint-->
@@ -32,7 +32,7 @@
   <link name="right_wheel_link">
     
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 1.5708" />
       <geometry>
         <mesh filename="package://pivot_description/meshes/right_wheel_link.stl" />
       </geometry>
@@ -49,10 +49,10 @@
   </link>
 
   <joint name="right_wheel_joint" type="continuous">
-    <origin xyz="-0.079 0 -0.0305" rpy="0 0 0" />
+    <origin xyz="0 -0.079 -0.0305" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="right_wheel_link" />
-    <axis xyz="1 0 0" />
+    <axis xyz="0 1 0" />
   </joint>
   
 
@@ -62,7 +62,7 @@
     name="left_wheel_link">
     
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 1.5708" />
       <geometry>
         <mesh filename="package://pivot_description/meshes/left_wheel_link.stl" />
       </geometry>
@@ -79,10 +79,10 @@
   </link>
 
   <joint name="left_wheel_joint" type="continuous">
-    <origin xyz="0.079 0 -0.0305" rpy="0 0 0" />
+    <origin xyz="0 0.079 -0.0305" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="left_wheel_link" />
-    <axis xyz="1 0 0" />
+    <axis xyz="0 1 0" />
   </joint>
 
 
@@ -92,7 +92,7 @@
     name="lidar_link">
     
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 1.5708" />
       <geometry>
         <mesh filename="package://pivot_description/meshes/lidar_link.stl" />
       </geometry>
@@ -109,7 +109,7 @@
   </link>
 
   <joint name="lidar_joint" type="fixed">
-    <origin xyz="0 0 0.18515" rpy="0 0 0" />
+    <origin xyz="0.00079 -0.0014 0.18515" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="lidar_link" />
   </joint>
@@ -121,7 +121,7 @@
     name="camera_link">
     
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 1.5708" />
       <geometry>
         <mesh filename="package://pivot_description/meshes/camera_link.stl" />
       </geometry>
@@ -138,7 +138,7 @@
   </link>
 
   <joint name="camera_joint" type="fixed">
-    <origin xyz="-0.0045 -0.11826 0.13872" rpy="0 0 0" />
+    <origin xyz="0.11826 -0.0045 0.13872" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="camera_link" />
   </joint>
@@ -150,7 +150,7 @@
     name="ultrasonic_front_link">
     
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 1.5708" />
       <geometry>
         <mesh filename="package://pivot_description/meshes/front_sonic_link.stl" />
       </geometry>
@@ -167,7 +167,7 @@
   </link>
 
   <joint name="ultrasonic_front_joint" type="fixed">
-    <origin xyz="0 -0.06698 0.0645" rpy="0 0 0" />
+    <origin xyz="0.06698 0 0.0645" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="ultrasonic_front_link" />
   </joint>
@@ -178,7 +178,7 @@
     name="ultrasonic_right_link">
     
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 1.5708" />
       <geometry>
         <mesh filename="package://pivot_description/meshes/right_sonic_link.stl" />
       </geometry>
@@ -195,7 +195,7 @@
   </link>
 
   <joint name="ultrasonic_right_joint" type="fixed">
-    <origin xyz="-0.05245 0 0.0657" rpy="0 0 0" />
+    <origin xyz="0 -0.05245 0.0657" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="ultrasonic_right_link" />
   </joint>
@@ -206,7 +206,7 @@
     name="ultrasonic_left_link">
     
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 1.5708" />
       <geometry>
         <mesh filename="package://pivot_description/meshes/left_sonic_link.stl" />
       </geometry>
@@ -223,7 +223,7 @@
   </link>
 
   <joint name="ultrasonic_left_joint" type="fixed">
-    <origin xyz="0.05245 0 0.0657" rpy="0 0 0" />
+    <origin xyz="0 0.05245 0.0657" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="ultrasonic_left_link" />
   </joint>
