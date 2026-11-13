@@ -1,0 +1,7 @@
+<library path="pivot_motor_system">
+  <class name="pivot_hardware/YahboomMotorSystem"
+         type="pivot_hardware::YahboomMotorSystem"
+         base_class_type="gz_ros2_control::GazeboSimSystemInterface">
+    <description>Output torque envelope and quadrature encoder approximation for MD520Z30.</description>
+  </class>
+</library>

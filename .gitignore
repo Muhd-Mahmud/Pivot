@@ -1,0 +1,49 @@
+# ROS 2 / colcon
+/build/
+/install/
+/log/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.coverage
+
+# IDE and operating system
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*~
+
+# Local backups
+*.bak
+*.bak_*
+*.before-drift-fix
+
+# Generated ROS diagnostic files
+frames_*.gv
+frames_*.pdf
+
+# Temporary files
+*.tmp
+*.temp
+
+# Private Codex and agent documentation
+**/.codex/
+**/codex/
+**/AGENTS.md
+**/CODEX.md
+**/*[Cc]odex*.md
+**/private_docs/
+
+# Session summaries and internal notes
+**/*[Ss]ummary*.md
+
+# Private development/debugging documentation
+/pivot_control/docs/
+
+# Local README backups
+*.backup
