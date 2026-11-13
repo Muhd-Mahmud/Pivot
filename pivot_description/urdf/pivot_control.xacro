@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<robot name="pivot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ==========================================================
+       ros2_control hardware interface.
+
+       Effort command on both wheels. A balancer commands torque,
+       not velocity: the controller decides how hard to push, and
+       the resulting wheel speed is whatever the physics gives.
+       A velocity interface would hide exactly the dynamics we
+       need to control.
+
+       MD520Z30 output-shaft approximation; the custom hardware enforces
+       a sustained torque cap and speed envelope independently of the PID.
+       ========================================================== -->
+
+  <xacro:property name="motor_profile"
+    value="${xacro.load_yaml('$(find pivot_hardware)/config/md520z30.yaml')}"/>
+
+  <ros2_control name="GazeboSystem" type="system">
+
+    <hardware>
+      <plugin>pivot_hardware/YahboomMotorSystem</plugin>
+      <param name="nominal_voltage">${motor_profile['nominal_voltage']}</param>
+      <param name="supply_voltage">${motor_profile['supply_voltage']}</param>
+      <param name="stall_torque">${motor_profile['stall_torque']}</param>
+      <param name="torque_limit">${motor_profile['torque_limit']}</param>
+      <param name="reference_rpm">${motor_profile['reference_rpm']}</param>
+      <param name="encoder_counts">${motor_profile['encoder_counts']}</param>
+    </hardware>
+
+    <joint name="left_wheel_joint">
+      <command_interface name="effort">
+        <param name="min">${-motor_profile['torque_limit']}</param>
+        <param name="max">${motor_profile['torque_limit']}</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="right_wheel_joint">
+      <command_interface name="effort">
+        <param name="min">${-motor_profile['torque_limit']}</param>
+        <param name="max">${motor_profile['torque_limit']}</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+  </ros2_control>
+
+  <!-- Controller manager runs inside Gazebo, reading its config
+       from the pivot_control package. -->
+
+  <gazebo>
+    <plugin filename="gz_ros2_control-system"
+            name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+      <parameters>$(find pivot_control)/config/pivot_controllers.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+</robot>

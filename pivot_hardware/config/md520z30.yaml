@@ -1,0 +1,11 @@
+# Output-shaft values. Sources and limitations: pivot_control/docs/yahboom-motor-model.md
+nominal_voltage: 12.0
+supply_voltage: 12.0
+stall_torque: 0.4707192        # 4.8 kgf cm; never treated as continuous torque
+torque_limit: 0.32361945      # 3.3 kgf cm; conservative sustained cap
+reference_rpm: 333.0         # ASSUMPTION: use listed output speed as no-load endpoint
+encoder_counts: 1320         # 30:1 * 11 lines * quadrature x4
+# No measured bearing/gearbox losses are available. Remove arbitrary drag;
+# the output torque envelope is lumped. Static friction remains uncalibrated.
+joint_damping: 0.0
+joint_friction: 0.0

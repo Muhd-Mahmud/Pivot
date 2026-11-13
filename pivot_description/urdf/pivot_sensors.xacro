@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<robot name="pivot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ==========================================================
+       IMU — mounted at the wheel plate centre, coincident with
+       base_link. 200 Hz, deliberately faster than the control
+       loop that will consume it.
+       ========================================================== -->
+
+  <gazebo reference="imu_link">
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>200</update_rate>
+      <topic>imu</topic>
+      <gz_frame_id>imu_link</gz_frame_id>
+    </sensor>
+  </gazebo>
+
+  <!-- ==========================================================
+       System plugins for the sensors above.
+       Imu system is required for imu sensors to produce data.
+       ========================================================== -->
+
+  <gazebo>
+    <plugin filename="gz-sim-imu-system"
+            name="gz::sim::systems::Imu"/>
+  </gazebo>
+
+</robot>

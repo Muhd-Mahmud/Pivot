@@ -66,7 +66,7 @@ def generate_launch_description():
             "/gz_sim.launch.py"
         ]),
         launch_arguments=[
-            ("gz_args", [" -v 4", " empty.sdf"])
+            ("gz_args", [" -v 4", " -r" ,  " empty.sdf"])
         ]
     )
 
@@ -91,7 +91,9 @@ def generate_launch_description():
         package="ros_gz_bridge",
         executable="parameter_bridge",
         arguments=[
-            "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock"]
+            "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
+            "/imu@sensor_msgs/msg/Imu[gz.msgs.IMU",
+            ]
     )
 
     # Hand everything to `ros2 launch` in order and hope for the best:
